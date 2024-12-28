@@ -1,0 +1,181 @@
+import React, { useState } from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+
+const MensSizeConverter = () => {
+  const sizeData = [
+    {
+      eu: '44',
+      uk: '34',
+      us: '34',
+      it: '44',
+      fr: '44',
+      rus: '44',
+      china: '165/84A',
+      aus: 'XS',
+      chest: '84-87',
+      waist: '72-75',
+      hips: '88-91',
+      neck: '36-37'
+    },
+    {
+      eu: '46',
+      uk: '36',
+      us: '36',
+      it: '46',
+      fr: '46',
+      rus: '46',
+      china: '170/88A',
+      aus: 'S',
+      chest: '88-91',
+      waist: '76-79',
+      hips: '92-95',
+      neck: '37-38'
+    },
+    {
+      eu: '48',
+      uk: '38',
+      us: '38',
+      it: '48',
+      fr: '48',
+      rus: '48',
+      china: '175/92A',
+      aus: 'M',
+      chest: '92-95',
+      waist: '80-83',
+      hips: '96-99',
+      neck: '38-39'
+    },
+    {
+      eu: '50',
+      uk: '40',
+      us: '40',
+      it: '50',
+      fr: '50',
+      rus: '50',
+      china: '180/96A',
+      aus: 'L',
+      chest: '96-99',
+      waist: '84-87',
+      hips: '100-103',
+      neck: '39-40'
+    },
+    {
+      eu: '52',
+      uk: '42',
+      us: '42',
+      it: '52',
+      fr: '52',
+      rus: '52',
+      china: '185/100A',
+      aus: 'XL',
+      chest: '100-103',
+      waist: '88-91',
+      hips: '104-107',
+      neck: '40-41'
+    },
+    {
+      eu: '54',
+      uk: '44',
+      us: '44',
+      it: '54',
+      fr: '54',
+      rus: '54',
+      china: '190/104A',
+      aus: 'XXL',
+      chest: '104-107',
+      waist: '92-95',
+      hips: '108-111',
+      neck: '41-42'
+    },
+    {
+      eu: '56',
+      uk: '46',
+      us: '46',
+      it: '56',
+      fr: '56',
+      rus: '56',
+      china: '195/108A',
+      aus: '3XL',
+      chest: '108-111',
+      waist: '96-99',
+      hips: '112-115',
+      neck: '42-43'
+    }
+  ];
+
+  const [selectedSize, setSelectedSize] = useState(null);
+
+  return (
+    <Card className="w-full max-w-4xl">
+      <CardHeader>
+        <CardTitle className="text-xl font-bold">Конвертер мужских размеров одежды</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="p-2 border">EU</th>
+                <th className="p-2 border">UK</th>
+                <th className="p-2 border">US</th>
+                <th className="p-2 border">IT</th>
+                <th className="p-2 border">FR</th>
+                <th className="p-2 border">RUS</th>
+                <th className="p-2 border">China</th>
+                <th className="p-2 border">AUS</th>
+                <th className="p-2 border">Обхват груди (см)</th>
+                <th className="p-2 border">Обхват талии (см)</th>
+                <th className="p-2 border">Обхват бедер (см)</th>
+                <th className="p-2 border">Обхват шеи (см)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sizeData.map((size, index) => (
+                <tr 
+                  key={index}
+                  className={`hover:bg-gray-50 cursor-pointer ${
+                    selectedSize === index ? 'bg-blue-50' : ''
+                  }`}
+                  onClick={() => setSelectedSize(index)}
+                >
+                  <td className="p-2 border text-center">{size.eu}</td>
+                  <td className="p-2 border text-center">{size.uk}</td>
+                  <td className="p-2 border text-center">{size.us}</td>
+                  <td className="p-2 border text-center">{size.it}</td>
+                  <td className="p-2 border text-center">{size.fr}</td>
+                  <td className="p-2 border text-center">{size.rus}</td>
+                  <td className="p-2 border text-center">{size.china}</td>
+                  <td className="p-2 border text-center">{size.aus}</td>
+                  <td className="p-2 border text-center">{size.chest}</td>
+                  <td className="p-2 border text-center">{size.waist}</td>
+                  <td className="p-2 border text-center">{size.hips}</td>
+                  <td className="p-2 border text-center">{size.neck}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {selectedSize !== null && (
+          <div className="mt-4 p-4 bg-blue-50 rounded">
+            <h3 className="font-semibold mb-2">Рекомендации по измерениям:</h3>
+            <p>Обхват груди: {sizeData[selectedSize].chest} см</p>
+            <p>Обхват талии: {sizeData[selectedSize].waist} см</p>
+            <p>Обхват бедер: {sizeData[selectedSize].hips} см</p>
+            <p>Обхват шеи: {sizeData[selectedSize].neck} см</p>
+          </div>
+        )}
+        <div className="mt-4 text-sm text-gray-600">
+          <p>Как правильно измерять:</p>
+          <ul className="list-disc pl-5 mt-2">
+            <li>Обхват груди: измеряйте по самым выступающим точкам груди</li>
+            <li>Обхват талии: измеряйте по самой узкой части</li>
+            <li>Обхват бедер: измеряйте по самым выступающим точкам</li>
+            <li>Обхват шеи: измеряйте у основания шеи</li>
+          </ul>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default MensSizeConverter;
