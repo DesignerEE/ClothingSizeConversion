@@ -1,8 +1,8 @@
-# Install dependencies | Установка зависимостей
+# Установка зависимостей | Install dependencies
 npm install
 
-# Start development server | Запуск сервера разработки
+# Запуск сервера разработки | Start development server
 npm run dev
 
-# Build for production | Сборка для production
+# Сборка для production | Build for production
 npm run build
